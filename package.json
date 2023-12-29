@@ -1,0 +1,38 @@
+{
+  "name": "create-jscad-project",
+  "version": "1.0.0",
+  "description": "An npx starter template for JsCad projects using Typescript and Hot Reload preview",
+  "main": "index.js",
+  "bin": {
+    "create-my-template": "./bin/create-jscad-project.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simplyhexagonal/create-jscad-project.git"
+  },
+  "keywords": [
+    "jscad",
+    "typescript",
+    "hmr",
+    "hot-reload",
+    "hot",
+    "reload",
+    "preview",
+    "scad",
+    "openscad",
+    "openjscad",
+    "vscode"
+  ],
+  "author": "Jean M. Lescure",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/simplyhexagonal/create-jscad-project/issues"
+  },
+  "homepage": "https://github.com/simplyhexagonal/create-jscad-project#readme",
+  "dependencies": {
+    "cross-spawn": "^7.0.3"
+  }
+}
