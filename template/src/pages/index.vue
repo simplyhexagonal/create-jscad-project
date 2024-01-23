@@ -17,6 +17,14 @@
   const { rotateX, rotateY, rotateZ } = transforms;
   const { project } = extrusions;
 
+  const appendExtension = (fileName: string, extension: string) => {
+    if (fileName.toLowerCase().endsWith(extension)) {
+      return fileName;
+    }
+
+    return `${fileName}.${extension}`;
+  };
+
   // the heart of rendering, as themes, controls, etc change
   let updateView = true;
 
@@ -33,6 +41,26 @@
   });
 
   uiState.value = localStorage.getItem('uiState') ? JSON.parse(localStorage.getItem('uiState') || '{}') : {};
+
+  const exportName = ref('design');
+  const exporting = ref(false);
+  const exportError = ref('');
+  const exportModalVisible = ref(false);
+
+  const showExportModal = () => {
+    exportModalVisible.value = true;
+
+    // focuse export modal
+    setTimeout(() => {
+      const exportNameInput = document.getElementById('exportName') as HTMLInputElement;
+      exportNameInput.focus();
+    }, 100);
+  };
+
+  const hideExportModal = () => {
+    exportModalVisible.value = false;
+    exportError.value = '';
+  };
 
   const params = ref({});
 
@@ -105,15 +133,75 @@
   let entities = entitiesFromSolids({}, ...[postProcess(main(params.value))].flat());
 
   const export3mf = () => {
-    axios.post('/api/export/3mf/');
+    if (!exporting.value){
+      exportError.value = '';
+      exporting.value = true;
+
+      const options = {
+        ...params.value,
+        ...uiState.value,
+        exportName: appendExtension(exportName.value, '3mf'),
+      };
+
+      axios.post(
+        '/api/export/3mf/',
+        options,
+      ).catch(
+        (error) => {
+          exportError.value = error.response?.data?.message || error.message || error;
+        }
+      ).finally(
+        () => exporting.value = false,
+      );
+    }
   };
 
   const exportX3d = () => {
-    axios.post('/api/export/x3d/');
+    if (!exporting.value){
+      exportError.value = '';
+      exporting.value = true;
+
+      const options = {
+        ...params.value,
+        ...uiState.value,
+        exportName: appendExtension(exportName.value, 'x3d'),
+      };
+
+      axios.post(
+        '/api/export/x3d/',
+        options,
+      ).catch(
+        (error) => {
+          exportError.value = error.response?.data?.message || error.message || error;
+        }
+      ).finally(
+        () => exporting.value = false,
+      );
+    }
   };
 
   const exportSvg = () => {
-    axios.post('/api/export/svg/', uiState.value);
+    if (!exporting.value){
+      exportError.value = '';
+      exporting.value = true;
+
+      const options = {
+        ...params.value,
+        ...uiState.value,
+        exportName: appendExtension(exportName.value, 'svg'),
+      };
+
+      axios.post(
+        '/api/export/svg/',
+        options,
+      ).catch(
+        (error) => {
+          exportError.value = error.response?.data?.message || error.message || error;
+        }
+      ).finally(
+        () => exporting.value = false,
+      );
+    }
   };
 
   onMounted(
@@ -406,23 +494,44 @@
         <div class="divider"></div>
       </li>
       <li>
-        <a v-on:click="export3mf" class="flex">
-          <span class="flex-1">Export 3MF</span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4" viewBox="0 0 24 24"><path d="M22 4C22 3.44772 21.5523 3 21 3H3C2.44772 3 2 3.44772 2 4V20C2 20.5523 2.44772 21 3 21H21C21.5523 21 22 20.5523 22 20V4ZM4 15H7.41604C8.1876 16.7659 9.94968 18 12 18C14.0503 18 15.8124 16.7659 16.584 15H20V19H4V15ZM4 5H20V13H15C15 14.6569 13.6569 16 12 16C10.3431 16 9 14.6569 9 13H4V5ZM16 11H13V14H11V11H8L12 6.5L16 11Z" fill="currentColor"></path></svg>
-        </a>
-      </li>
-      <li>
-        <a v-on:click="exportX3d" class="flex">
-          <span class="flex-1">Export X3D</span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4" viewBox="0 0 24 24"><path d="M22 4C22 3.44772 21.5523 3 21 3H3C2.44772 3 2 3.44772 2 4V20C2 20.5523 2.44772 21 3 21H21C21.5523 21 22 20.5523 22 20V4ZM4 15H7.41604C8.1876 16.7659 9.94968 18 12 18C14.0503 18 15.8124 16.7659 16.584 15H20V19H4V15ZM4 5H20V13H15C15 14.6569 13.6569 16 12 16C10.3431 16 9 14.6569 9 13H4V5ZM16 11H13V14H11V11H8L12 6.5L16 11Z" fill="currentColor"></path></svg>
-        </a>
-      </li>
-      <li>
-        <a v-on:click="exportSvg" class="flex">
-          <span class="flex-1">Export SVG</span>
+        <a v-on:click="showExportModal" class="flex">
+          <span class="flex-1">Export</span>
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4" viewBox="0 0 24 24"><path d="M22 4C22 3.44772 21.5523 3 21 3H3C2.44772 3 2 3.44772 2 4V20C2 20.5523 2.44772 21 3 21H21C21.5523 21 22 20.5523 22 20V4ZM4 15H7.41604C8.1876 16.7659 9.94968 18 12 18C14.0503 18 15.8124 16.7659 16.584 15H20V19H4V15ZM4 5H20V13H15C15 14.6569 13.6569 16 12 16C10.3431 16 9 14.6569 9 13H4V5ZM16 11H13V14H11V11H8L12 6.5L16 11Z" fill="currentColor"></path></svg>
         </a>
       </li>
     </ul>
+  </div>
+  <div v-if="exportModalVisible" class="absolute top-0 left-0 right-0 bottom-0 grid items-center justify-center">
+    <div class="p-2 shadow bg-base-100 border border-primary">
+      <label for="exportName">Export file name:</label>
+      <input
+        class="w-full p-2 my-2"
+        type="text"
+        id="exportName"
+        name="exportName"
+        v-model="exportName"
+      />
+      <div v-if="exportError" class="text-error">
+        Error: {{ exportError }}
+      </div>
+      <div v-if="!exporting" class="flex gap-4">
+        <a v-on:click="export3mf" class="btn btn-primary btn-outline">
+          <span class="flex-1">Export 3MF</span>
+        </a>
+        <a v-on:click="exportX3d" class="btn btn-primary btn-outline">
+          <span class="flex-1">Export X3D</span>
+        </a>
+        <a v-on:click="exportSvg" class="btn btn-primary btn-outline">
+          <span class="flex-1">Export SVG</span>
+        </a>
+        <a v-on:click="hideExportModal" class="btn btn-neutral btn-outline ml-4">
+          <span class="flex-1">Close</span>
+        </a>
+      </div>
+      <div v-else class="flex gap-4 items-center justify-center">
+        <span class="loading loading-spinner loading-sm"></span>
+        <span class="p-4">Exporting...</span>
+      </div>
+    </div>
   </div>
 </template>
