@@ -198,6 +198,6 @@ server.listen(
       process.exit(1);
     }
 
-    console.log(`Server listening at ${address}`);
+    console.log(`\nServer listening at ${address}\n\nYou can now reload the Simple Browser to see the CAD drawing.`);
   }
 );

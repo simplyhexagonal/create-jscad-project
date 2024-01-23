@@ -1,12 +1,18 @@
 <script setup lang="ts">
   import { onMounted, ref } from 'vue';
   import { prepareRender, drawCommands, cameras, controls, entitiesFromSolids } from '@jscad/regl-renderer';
-  import { drawing } from './drawing';
   import {
   extrusions,
   transforms,
   } from '@jscad/modeling';
   import axios from 'axios';
+
+  import {
+    main,
+    getParameterDefinitions,
+  } from './design';
+
+  import Parameters from './Parameters.vue';
 
   const { rotateX, rotateY, rotateZ } = transforms;
   const { project } = extrusions;
@@ -21,9 +27,14 @@
     rotateEntitiesX?: boolean;
     rotateEntitiesY?: boolean;
     rotateEntitiesZ?: boolean;
-  }>({});
+  }>({
+    gridOn: true,
+    axisOn: true,
+  });
 
   uiState.value = localStorage.getItem('uiState') ? JSON.parse(localStorage.getItem('uiState') || '{}') : {};
+
+  const params = ref({});
 
   const saveUiState = () => {
     localStorage.setItem('uiState', JSON.stringify(uiState.value));
@@ -43,28 +54,28 @@
 
   const toggleProjection = () => {
     uiState.value.projectEntities = !uiState.value.projectEntities;
-    entities = entitiesFromSolids({}, ...[postProcess(drawing({ scale: 1 }))].flat());
+    entities = entitiesFromSolids({}, ...[postProcess(main(params.value))].flat());
     updateView = true;
     saveUiState();
   }
 
   const toggleRotateX = () => {
     uiState.value.rotateEntitiesX = !uiState.value.rotateEntitiesX;
-    entities = entitiesFromSolids({}, ...[postProcess(drawing({ scale: 1 }))].flat())
+    entities = entitiesFromSolids({}, ...[postProcess(main(params.value))].flat())
     updateView = true;
     saveUiState();
   }
 
   const toggleRotateY = () => {
     uiState.value.rotateEntitiesY = !uiState.value.rotateEntitiesY;
-    entities = entitiesFromSolids({}, ...[postProcess(drawing({ scale: 1 }))].flat())
+    entities = entitiesFromSolids({}, ...[postProcess(main(params.value))].flat())
     updateView = true;
     saveUiState();
   }
 
   const toggleRotateZ = () => {
     uiState.value.rotateEntitiesZ = !uiState.value.rotateEntitiesZ;
-    entities = entitiesFromSolids({}, ...[postProcess(drawing({ scale: 1 }))].flat())
+    entities = entitiesFromSolids({}, ...[postProcess(main(params.value))].flat())
     updateView = true;
     saveUiState();
   }
@@ -91,7 +102,7 @@
     return finalEntities;
   }
 
-  let entities = entitiesFromSolids({}, ...[postProcess(drawing({ scale: 1 }))].flat());
+  let entities = entitiesFromSolids({}, ...[postProcess(main(params.value))].flat());
 
   const export3mf = () => {
     axios.post('/api/export/3mf/');
@@ -110,7 +121,7 @@
       const perspectiveCamera = cameras.perspective;
       const orbitControls = controls.orbit;
 
-      const containerElement = document.getElementById("drawing") as HTMLDivElement;
+      const containerElement = document.getElementById("design") as HTMLDivElement;
 
       const width = containerElement.clientWidth;
       const height = containerElement.clientHeight;
@@ -331,10 +342,25 @@
       containerElement.onwheel = wheelHandler;
     }
   );
+
+  const onParamChange = (paramValues: any) => {
+    params.value = paramValues;
+
+    entities = entitiesFromSolids({}, ...[postProcess(main(params.value))].flat());
+    updateView = true;
+  };
 </script>
 
 <template>
-  <div id="drawing" class="w-full h-full"></div>
+  <div id="design" class="w-full h-full"></div>
+  <div class="absolute bottom-2 left-2 dropdown dropdown-top">
+    <div tabindex="0" role="button" class="btn btn-sm btn-outline btn-primary bg-base-100">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4"><path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z" fill="currentColor"></path></svg>
+    </div>
+    <div tabindex="0" class="overflow-y-auto dropdown-content z-[1] shadow bg-base-100 p-2 w-max border border-primary">
+      <Parameters :parameters="getParameterDefinitions()" v-on:update="onParamChange" />
+    </div>
+  </div>
   <div class="absolute top-2 right-2 dropdown dropdown-end">
     <div tabindex="0" role="button" class="btn btn-sm btn-outline btn-primary bg-base-100">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4"><path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z" fill="currentColor"></path></svg>

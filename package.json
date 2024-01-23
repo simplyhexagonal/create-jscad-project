@@ -1,6 +1,6 @@
 {
   "name": "create-jscad-project",
-  "version": "1.0.0",
+  "version": "0.10.0",
   "description": "An npx starter template for JsCad projects using Typescript and Hot Reload preview",
   "main": "index.js",
   "bin": {
