@@ -28,7 +28,7 @@ Please consider:
 
 ### Prerequisites
 
-Ensure you have Node.js installed on your system to use `npm`.
+Ensure you have Node.js installed on your system to use `npm` or `npx`.
 
 ### Installation
 
@@ -36,6 +36,12 @@ To create a new JsCad project, run the following command in your terminal:
 
 ```bash
 npm init jscad-project <your-project-name>
+```
+
+or
+
+```bash
+npx create-jscad-project <your-project-name>
 ```
 
 This command will create a new directory with your project name, set up the folder structure, and install all the necessary dependencies.
