@@ -13,6 +13,26 @@
     "type": "git",
     "url": "git+https://github.com/simplyhexagonal/create-jscad-project.git"
   },
+  "files": [
+    "package-lock.json",
+    "package.json",
+    "bin",
+    "assets",
+    "README.md",
+    "template/.vscode",
+    "template/output/keep",
+    "template/scripts",
+    "template/src",
+    "template/.gitignore",
+    "template/package-lock.json",
+    "template/package.json",
+    "template/postcss.config.js",
+    "template/tailwind.config.js",
+    "template/tsconfig.json",
+    "template/tsconfig.node.json",
+    "template/vite.config.ts",
+    "template/README.md"
+  ],
   "keywords": [
     "jscad",
     "typescript",
