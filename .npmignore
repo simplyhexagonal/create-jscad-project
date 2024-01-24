@@ -1,0 +1,4 @@
+node_modules
+template/node_modules
+template/output/*
+!template/output/.keep
