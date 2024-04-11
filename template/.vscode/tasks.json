@@ -4,7 +4,7 @@
     {
       "label": "Open Design",
       "type": "shell",
-      "command": "code -r ${workspaceFolder}/src/pages/design.ts",
+      "command": "${execPath} -r ${workspaceFolder}/src/pages/design.ts",
       "dependsOn": [
         "Split Editor"
       ]
