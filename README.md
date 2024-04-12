@@ -103,6 +103,29 @@ npm run dev
 
 Contributions are welcome! Feel free to submit pull requests or open issues to improve `create-jscad-project`.
 
+## Contributors
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/jeanlescure">
+        <img
+          alt="jeanlescure"
+          src="https://raw.githubusercontent.com/simplyhexagonal/create-jscad-project/main/assets/contributors/jeanlescure.svg" width="117"
+        />
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/springbov">
+        <img
+          alt="springbov"
+          src="https://raw.githubusercontent.com/simplyhexagonal/create-jscad-project/main/assets/contributors/springbov.svg" width="117"
+        />
+      </a>
+    </td>
+  </tr>
+</table>
+
 ## License
 
 This project is licensed under the [Apache-2.0]([LICENSE](https://www.apache.org/licenses/LICENSE-2.0)).
