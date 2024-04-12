@@ -52,7 +52,7 @@ This command will create a new directory with your project name, set up the fold
 To use a specific template, pass the `--template` argument when creating a new project. For example:
 
 ```bash
-npm init jscad-project <your-project-name> --template=screw-and-nut
+npm init jscad-project <your-project-name> -- --template=screw-and-nut
 ```
 
 To list available templates you can run:
