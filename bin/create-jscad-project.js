@@ -15,7 +15,7 @@ function getNamedArgs() {
     .filter((arg) => arg.includes('='))
     .forEach((arg) => {
       const [key, value] = arg.split('=');
-      args[key] = value;
+      args[key.replace('--', '')] = value;
     });
   return args;
 }
