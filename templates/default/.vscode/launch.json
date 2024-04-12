@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "name": "Launch JsCad",
+            "request": "launch",
+            "preLaunchTask": "Focus Debug",
+            "runtimeArgs": [
+                "run",
+                "dev"
+            ],
+            "runtimeExecutable": "npm",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        }
+    ]
+}

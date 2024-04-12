@@ -302,5 +302,3 @@ $RECYCLE.BIN/
 
 !**/scripts/test
 !scripts/test
-templates/**/output/*
-!templates/**/output/.keep

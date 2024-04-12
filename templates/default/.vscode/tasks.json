@@ -1,0 +1,61 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Open Design",
+      "type": "shell",
+      "command": "${execPath} -r ${workspaceFolder}/src/pages/design.ts",
+      "dependsOn": [
+        "Split Editor"
+      ]
+    },
+    {
+      "label": "Split Editor",
+      "command": "${input:splitEditor}",
+      "dependsOn": [
+        "Open JsCad Preview"
+      ]
+    },
+    { 
+      "label": "Open JsCad Preview",
+      "command": "${input:openSimpleBrowser}"
+    },
+    {
+      "label": "Focus Explorer",
+      "command": "${input:focusExplorer}",
+      "dependsOn": [
+        "Open Design"
+      ]
+    },
+    {
+      "label": "Focus Debug",
+      "command": "${input:focusDebug}",
+      "dependsOn": [
+        "Focus Explorer"
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "id": "splitEditor",
+      "type": "command",
+      "command": "workbench.action.splitEditorLeft"
+    },
+    {
+      "id": "openSimpleBrowser",
+      "type": "command",
+      "command": "simpleBrowser.show",
+      "args": ["http://localhost:5173"]
+    },
+    {
+      "id": "focusDebug",
+      "type": "command",
+      "command": "workbench.panel.repl.view.focus"
+    },
+    {
+      "id": "focusExplorer",
+      "type": "command",
+      "command": "workbench.files.action.focusFilesExplorer"
+    }
+  ]
+}

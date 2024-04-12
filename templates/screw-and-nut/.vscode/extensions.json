@@ -1,0 +1,8 @@
+{
+	"recommendations": [
+		"vscode.simple-browser",
+    "ms-vscode.vscode-typescript-next",
+    "vue.vscode-typescript-vue-plugin",
+    "vue.volar"
+	]
+}

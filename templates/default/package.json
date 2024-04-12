@@ -1,0 +1,35 @@
+{
+  "name": "jscad-project",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "NODE_ENV=dev ./scripts/dev"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@fastify/static": "^6.12.0",
+    "@jscad/csg": "^0.7.0",
+    "@jscad/io": "^2.4.6",
+    "@jscad/modeling": "^2.12.0",
+    "@jscad/regl-renderer": "^2.6.7",
+    "@types/glob": "^8.1.0",
+    "@types/node": "^20.10.5",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "autoprefixer": "^10.4.16",
+    "axios": "^1.6.3",
+    "concurrently": "^8.2.2",
+    "daisyui": "^4.4.24",
+    "fastify": "^4.25.2",
+    "glob": "^10.3.10",
+    "livereload": "^0.9.3",
+    "nodemon": "^3.0.2",
+    "sass": "^1.69.5",
+    "tailwindcss": "^3.4.0",
+    "tslib": "^2.6.2",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10",
+    "vue": "^3.3.13"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "types" : ["node"]
+  },
+  "include": [
+    "content.fetch.ts",
+    "vite.config.ts",
+    "prerender.ts"
+  ]
+}

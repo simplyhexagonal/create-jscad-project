@@ -7,18 +7,43 @@ const fs = require('fs');
 const path = require('path');
 const { cwd } = require('process');
 
+// Function to get named arguments
+function getNamedArgs() {
+  const args = {};
+  process.argv
+    .slice(2)
+    .filter((arg) => arg.includes('='))
+    .forEach((arg) => {
+      const [key, value] = arg.split('=');
+      args[key] = value;
+    });
+  return args;
+}
+
 // The first argument will be the project name.
 const projectName = process.argv[2];
+
+// if projectName is "--list-templates", list the available templates and exit
+if (projectName === '--list-templates') {
+  const templateDir = path.resolve(__dirname, '../templates');
+  const templateNames = fs.readdirSync(templateDir);
+
+  console.log(templateNames.join('\n'));
+
+  process.exit(0);
+}
 
 // Create a project directory with the project name.
 const currentDir = cwd();
 const projectDir = path.resolve(currentDir, projectName);
 fs.mkdirSync(projectDir, { recursive: true });
 
-// A common approach to building a starter template is to
-// create a `template` folder which will house the template
-// and the files we want to create.
-const templateDir = path.resolve(__dirname, '../template');
+// Get the template name or use 'default'
+const namedArgs = getNamedArgs();
+const templateName = namedArgs.template || 'default';
+
+// Copy the template
+const templateDir = path.resolve(__dirname, '../templates/', templateName);
 fs.cpSync(templateDir, projectDir, { recursive: true });
 
 const projectPackageJson = require(path.join(projectDir, 'package.json'));
