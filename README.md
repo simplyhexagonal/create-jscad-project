@@ -11,6 +11,7 @@ An NPX starter template designed to kickstart your JsCad projects using TypeScri
 - 🚀 **Easy Setup**: Initialize your JsCad project with a single command.
 - 💻 **TypeScript Support**: Leverage the power of TypeScript for more robust code.
 - 🔁 **Hot Reload Preview**: Instantly view changes in your CAD design as you code.
+- 🔧 **Automatic Interactive Controls**: If you define parameters in your design, the viewport will render interactive controls that can be changed in the UI.
 - 📁 **Automated Structure and Dependency Management**: Automatically creates the necessary folder structure and installs dependencies.
 - 🎨 **Focus on Design**: Spend more time designing and less on setup.
 - 🛠️ **Integrated VSCode Experience**: Recommended extensions and launch configurations for a seamless development experience.
@@ -45,6 +46,27 @@ npx create-jscad-project <your-project-name>
 ```
 
 This command will create a new directory with your project name, set up the folder structure, and install all the necessary dependencies.
+
+### Templates
+
+To use a specific template, pass the `--template` argument when creating a new project. For example:
+
+```bash
+npm init jscad-project <your-project-name> --template=screw-and-nut
+```
+
+To list available templates you can run:
+
+```bash
+npx create-jscad-project --list-templates
+```
+
+There are currently two templates available:
+
+- `default`: A blank canvas for whatever project you're working on.
+- `screw-and-nut`: Contains a screw and nut for you to play with.
+
+More templates will be added soon, hopefully by contributors too!
 
 ### VSCode Integration
 

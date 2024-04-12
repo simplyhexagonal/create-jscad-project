@@ -1,7 +1,0 @@
-#! /usr/bin/env bash
-
-mkdir -p output
-
-concurrently \
-  "nodemon src/**/* -e ts,html,vue --exec 'tsx --tsconfig tsconfig.node.json ./src/server/index.ts'" \
-  "vite"
