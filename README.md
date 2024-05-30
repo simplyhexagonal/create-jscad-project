@@ -123,6 +123,14 @@ Contributions are welcome! Feel free to submit pull requests or open issues to i
         />
       </a>
     </td>
+    <td align="center">
+      <a href="https://github.com/z3dev">
+        <img
+          alt="z3dev"
+          src="https://raw.githubusercontent.com/simplyhexagonal/create-jscad-project/main/assets/contributors/z3dev.svg" width="117"
+        />
+      </a>
+    </td>
   </tr>
 </table>
 
