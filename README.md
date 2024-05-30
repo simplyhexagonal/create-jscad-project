@@ -1,14 +1,14 @@
-# Create JsCad Project
+# Create JSCAD Project
 
 ## Introduction
 
-An NPX starter template designed to kickstart your JsCad projects using TypeScript and Hot Reload preview. This tool simplifies the process of setting up a JsCad project, allowing you to focus on creating fully parametric CAD drawings with ease.
+An NPX starter template designed to kickstart your JSCAD projects using TypeScript and Hot Reload preview. This tool simplifies the process of setting up a JSCAD project, allowing you to focus on creating fully parametric CAD drawings with ease.
 
 ![Demo GIF](./assets/demo.gif)
 
 ## Features
 
-- 🚀 **Easy Setup**: Initialize your JsCad project with a single command.
+- 🚀 **Easy Setup**: Initialize your JSCAD project with a single command.
 - 💻 **TypeScript Support**: Leverage the power of TypeScript for more robust code.
 - 🔁 **Hot Reload Preview**: Instantly view changes in your CAD design as you code.
 - 🔧 **Automatic Interactive Controls**: If you define parameters in your design, the viewport will render interactive controls that can be changed in the UI.
@@ -33,7 +33,7 @@ Ensure you have Node.js installed on your system to use `npm` or `npx`.
 
 ### Installation
 
-To create a new JsCad project, run the following command in your terminal:
+To create a new JSCAD project, run the following command in your terminal:
 
 ```bash
 npm init jscad-project <your-project-name>
@@ -71,7 +71,7 @@ More templates will be added soon, hopefully by contributors too!
 ### VSCode Integration
 
 - **Recommended Extensions**: The generated `.vscode` directory contains recommendations for helpful extensions. Please review and install them to enhance your development experience.
-- **Launch Configuration**: Use the "Launch JsCad" configuration in the `Run and Debug` section of VSCode. This will open the `drawing.ts` file, run `npm run dev`, and open the preview browser. 
+- **Launch Configuration**: Use the "Launch JSCAD" configuration in the `Run and Debug` section of VSCode. This will open the `drawing.ts` file, run `npm run dev`, and open the preview browser. 
   - **Note**: The first time you run this, the preview browser may initially display a white screen. Please wait until the debug output indicates that it's safe to reload the simple browser panel.
 
 ### Alternatively - Development in other IDEs
@@ -90,11 +90,11 @@ npm run dev
 
 ## Related Projects and Resources
 
-`create-jscad-project` is built upon and inspired by the capabilities of JSCAD. Here are some resources and related projects that can enhance your experience with JsCad:
+`create-jscad-project` is built upon and inspired by the capabilities of JSCAD. Here are some resources and related projects that can enhance your experience with JSCAD:
 
 - **JSCAD**: The core framework upon which this project is based. For more information and documentation, visit [JSCAD's Github](https://github.com/jscad/OpenJSCAD.org).
 
-- **JsCad Cheat Sheet**: A handy guide for quick reference to JsCad syntax and features. Perfect for beginners and experienced users alike. Check out the [JsCad Cheat Sheet](https://openjscad.xyz/dokuwiki/doku.php?id=en:jscad_design_guide).
+- **JSCAD Cheat Sheet**: A handy guide for quick reference to JSCAD syntax and features. Perfect for beginners and experienced users alike. Check out the [JSCAD Cheat Sheet](https://openjscad.xyz/dokuwiki/doku.php?id=en:jscad_design_guide).
 
 - **Parametric Polysphericon Design Tutorial**: Dive into a practical example of parametric design with JSCAD in this informative YouTube video by CodeDoodle. Watch the [Parametric Polysphericon Design using JSCAD](https://www.youtube.com/watch?v=j0GNx376kcY) for insights and inspiration.
 

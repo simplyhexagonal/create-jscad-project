@@ -13,11 +13,11 @@
       "label": "Split Editor",
       "command": "${input:splitEditor}",
       "dependsOn": [
-        "Open JsCad Preview"
+        "Open JSCAD Preview"
       ]
     },
     { 
-      "label": "Open JsCad Preview",
+      "label": "Open JSCAD Preview",
       "command": "${input:openSimpleBrowser}"
     },
     {

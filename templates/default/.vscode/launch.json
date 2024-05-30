@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "name": "Launch JsCad",
+            "name": "Launch JSCAD",
             "request": "launch",
             "preLaunchTask": "Focus Debug",
             "runtimeArgs": [
