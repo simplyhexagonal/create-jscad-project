@@ -1,4 +1,4 @@
-# JSCad Project
+# JSCAD Project
 
 ## Introduction
 
@@ -13,7 +13,7 @@ Ensure you have Node.js installed on your system.
 ### VSCode Integration
 
 - **Recommended Extensions**: The generated `.vscode` directory contains recommendations for helpful extensions. Please review and install them to enhance your development experience.
-- **Launch Configuration**: Use the "Launch JSCAD" configuration in the `Run and Debug` section of VSCode. This will open the `drawing.ts` file, run `npm run dev`, and open the preview browser. 
+- **Launch Configuration**: Use the "Launch JSCAD" configuration in the `Run and Debug` section of VSCode. This will open the `design.ts` file, run `npm run dev`, and open the preview browser. 
   - **Note**: The first time you run this, the preview browser may initially display a white screen. Please wait until the debug output indicates that it's safe to reload the simple browser panel.
 
 ### Alternatively - Development in other IDEs

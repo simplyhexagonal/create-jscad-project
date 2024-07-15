@@ -13,6 +13,19 @@
                 "<node_internals>/**"
             ],
             "type": "node"
+        },
+        {
+            "name": "Relaunch JSCAD",
+            "request": "launch",
+            "runtimeArgs": [
+                "run",
+                "dev"
+            ],
+            "runtimeExecutable": "npm",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
         }
     ]
 }
